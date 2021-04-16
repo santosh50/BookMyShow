@@ -1,1 +1,3 @@
 # BookMyShow
+
+Events booking app

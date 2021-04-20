@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Payment</title>
+    </head>
+    <style>
+        h1 {text-align: center; font-family: 'Courier New', Courier, monospace; padding: 40;}
+        div {text-align: center; padding: 40; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: x-large;}
+        body {background-color: lightskyblue;}
+        span {padding: 30;}
+        input {display: none;}
+        .button0 {
+            background-color: yellow;
+            color: black;
+            padding: 20.0;
+            text-align: center;
+            font-size: large;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .button1 {
+            background-color: #38ec44;
+            color: white;
+            padding: 20.0;
+            text-align: center;
+            cursor: pointer;
+            font-size: large;
+            width: 300px;
+            border-radius: 20px;
+        }
+    </style>
+    <body>
+        <a href="seat_selection.html">
+            <button class="button0">Back</button>
+        </a>
+        <h1>Your Ticket:</h1>
+        <div>
+        <form action="/cgi-bin/booking.py" method="post">
+            <b>Movie Name:</b><span id="name"></span>
+            <input name="name" id="iname" value="">
+            <br><br>
+            <b>Tickets:</b><span id="ticket"></span>
+            <input name="ticket" id="iticket" value="">
+            <br><br>
+            <b>Showtime:</b><span for="time" id="time"></span>
+            <input name="time" id="itime" value="">
+            <br><br>
+            <b>Price:</b><span for="price" id="price"></span>
+            <input name="price" id="iprice" value="">
+            <br><br>
+            <button type="submit" class="button1">Pay with Card</button>
+            <script>
+                const query = window.location.search;
+                const params = new URLSearchParams(query);
+                const moviename = params.get("movie");
+                const time = params.get("showtime")
+                const ticketCount = params.get("ticketCount")
+                const price = `Rs. ${500 * ticketCount}/-`;
+                document.getElementById("name").innerHTML = moviename;
+                document.getElementById("iname").setAttribute("value", moviename)
+                document.getElementById("ticket").innerHTML = ticketCount;
+                document.getElementById("iticket").setAttribute("value", ticketCount)
+                document.getElementById("price").innerHTML = price;
+                document.getElementById("iprice").setAttribute("value", price)
+                document.getElementById("time").innerHTML = time;
+                document.getElementById("itime").setAttribute("value", time)
+
+            </script>
+            </div>
+        </form>
+    </body>
+</html>

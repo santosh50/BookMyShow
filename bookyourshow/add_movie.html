@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Add New Movie</title>
+    </head>
+    <style>
+        h1 {text-align: center; font-family: 'Courier New', Courier, monospace; padding: 40;}
+        div {text-align: center; padding: 10;}
+        body {background-color: lightskyblue;}
+        .b {font-size: 25; padding: 30;}
+        .button0 {
+            background-color: yellow;
+            color: black;
+            padding: 20.0;
+            text-align: center;
+            font-size: large;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .button1 {
+            background-color: green;
+            color: white;
+            padding: 20.0;
+            text-align: left;
+            cursor: pointer;
+            font-size: large;
+            width: 300px;
+            border-radius: 20px;
+        }
+    </style>
+    <body>
+        <a href="manage_movies.html">
+            <button class="button0">Back</button>
+        </a>
+        <h1>Add a new Movie</h1>
+        <hr>
+        <div>           
+        <form action="/cgi-bin/add.py" method="post">
+            <div>
+                <label for="movieid"><b>Movie ID</b></label>
+                <br>
+                <input type="text" placeholder="Enter Movie ID" name="movieid" required>
+            </div>
+            <div>
+                <label for="moviename"><b>Movie Name</b></label>
+                <br>
+                <input type="text" placeholder="Enter Movie Name" name="moviename" required>
+            </div>
+            <div>
+                <label for="postername"><b>Movie Poster</b></label>
+                <br>
+                <input type="text" placeholder="Enter image file name" name="postername" required>
+            </div>
+            <div>
+                <label for="year"><b>Year</b></label>
+                <br>
+                <input type="text" placeholder="Enter year of release" name="year" required>
+            </div>
+            <div>
+                <label for="genre"><b>Genre</b></label>
+                <br>
+                <input type="text" placeholder="Enter movie genre" name="genre" required>
+            </div>
+            <div>
+                <label for="rating"><b>Rating</b></label>
+                <br>
+                <input type="text" placeholder="Enter IMDb Rating" name="rating" required>
+            </div>
+            <button class="button1" type="submit"><b class="b">+</b>Add New Movie</button>
+        </form>
+        </div>>
+    </body>
+</html>

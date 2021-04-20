@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Seat Selection</title>
+    </head>
+    <style>
+        h1 {text-align: center; font-family: 'Courier New', Courier, monospace; padding: 20;}
+        h2 {text-align: center; font-family: 'Courier New', Courier, monospace;}
+        .flex-container {display: flex; font-size: 15;}
+        div {text-align: center;  padding-left: 120;}
+        body {background-color: lightskyblue;}
+        .p0 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+        .new {font-size: x-large; width: 40px; text-align: center;}
+        .button0 {
+            background-color: yellow;
+            color: black;
+            padding: 20.0;
+            text-align: center;
+            font-size: large;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .button1 {
+            background-color: #38ec44;
+            color: white;
+            padding: 20.0;
+            margin-right: 200;
+            text-align: center;
+            cursor: pointer;
+            font-size: large;
+            width: 200px;
+            border-radius: 20px;
+        }
+    </style>
+    <script>
+        const query = window.location.search;
+        const params = new URLSearchParams(query);
+        const moviename = params.get("movie");
+        var ticketCount = 5;
+        function updateValue(val) {
+            document.getElementById('textinput').value = val;
+            ticketCount = val;
+        }
+        function passValue() {
+            time = document.getElementById("time").value;
+            const url = `payment.html?movie=${moviename}&ticketCount=${ticketCount}&showtime=${time}`;
+            document.getElementById("anchor").setAttribute("href", url);
+        }
+    </script>
+    <body>
+        <form action="/cgi-bin/list_movies.py" method="post">
+            <button class="button0" type="submit">Back</button>
+        </form>
+        <h1>Movie Selected:<p id="name" class="p0"></p></h1>
+        <script>document.getElementById("name").innerHTML = moviename;</script>
+        <hr>
+        <div class="flex-container">
+        <div>
+        <form>
+        <h2>Select Number of Seats:</h2>
+            <input type="range" name='rangeInput' min=1 max=10 value=5 onchange="updateValue(this.value);">
+            <br><br>
+            <input type="text" id="textinput" value="5" class="new">
+        </div>
+        <div>
+            <h2>Select Show Time:</h2>
+                <input type="time" name="time" id="time" required>
+        </div>
+        </div>
+        <br><br>
+        <div>
+        <a id="anchor">                
+            <button type="submit" class="button1" onclick="passValue()">Continue</button>
+        </a>
+        </form>
+        </div>
+    </body>
+</html>

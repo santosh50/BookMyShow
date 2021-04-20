@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Delete Existing Movie</title>
+    </head>
+    <style>
+        h1 {text-align: center; font-family: 'Courier New', Courier, monospace; padding: 40;}
+        div {text-align: center; padding: 10;}
+        body {background-color: lightskyblue;}
+        .b {font-size: 25; padding: 30;}
+        .button0 {
+            background-color: yellow;
+            color: black;
+            padding: 20.0;
+            text-align: center;
+            font-size: large;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .button1 {
+            background-color: red;
+            color: white;
+            padding: 20.0;
+            text-align: left;
+            cursor: pointer;
+            font-size: large;
+            width: 300px;
+            border-radius: 20px;
+        }
+    </style>
+    <body>
+        <a href="manage_movies.html">
+            <button class="button0">Back</button>
+        </a>
+        <h1>Delete an existing Movie</h1>
+        <hr>
+        <div>
+            <form action="/cgi-bin/delete.py" method="post">
+                <div>
+                    <label for="movieid"><b>Enter the Movie ID:</b></label>
+                    <input type="text" name="movieid" required>
+                </div>
+                <div>
+                    <button class="button1"><b class="b">x</b>Delete Movie</button>
+                </div>
+            </form>
+            </form>
+        </div>
+    </body>
+</html>

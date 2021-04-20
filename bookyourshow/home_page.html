@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Home Page</title>
+    </head>
+    <style>
+        h1 {text-align: center; font-family: 'Courier New', Courier, monospace; padding: 40;}
+        div {text-align: center; padding: 40;}
+        body {background-color: lightskyblue;}
+        .button0 {
+            background-color: yellow;
+            color: black;
+            padding: 20.0;
+            text-align: center;
+            font-size: large;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .button1 {
+            background-color: #38ec44;
+            color: white;
+            padding: 20.0;
+            text-align: center;
+            cursor: pointer;
+            font-size: large;
+            width: 300px;
+            border-radius: 20px;
+        }
+        .button2 {
+            background-color: orange;
+            color: white;
+            padding: 20.0;
+            text-align: center;
+            cursor: pointer;
+            font-size: large;
+            width: 300px;
+            border-radius: 20px;
+        }
+    </style>
+    <body>
+        <a href="user_login.html">
+            <button class="button0">Back</button>
+        </a>
+        <h1 id="header">Welcome</h1>
+        <script>
+            const query = window.location.search;
+            const params = new URLSearchParams(query);
+            const username = params.get("uname");
+            const flag = params.get("flag")
+            if(flag==1)
+            {
+                document.getElementById("header").innerHTML = `Welcome ${username}`
+            }
+        </script>
+        <div>
+            <form action="/cgi-bin/list_movies.py" method="post">
+                <button class="button1" type="submit">Browse Movies</button>
+            </form>
+        </div>
+        <div>
+            <form action="/cgi-bin/view_bookings.py" method="post">
+                <button class="button2" type="submit">View Bookings</button>
+            </form>
+        </div>
+    </body>
+</html>

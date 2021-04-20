@@ -1,0 +1,46 @@
+#!C:/Users/HP/AppData/Local/Programs/Python/Python39/python.exe
+print("Content-Type: text/html; charset=utf-8\n\n")
+
+import cgi 
+import sqlite3
+
+db = sqlite3.connect("bookyourshow.db")
+cursor = db.execute("SELECT * FROM MOVIES;")
+movie_details = list(cursor)
+
+print("<title>Browse Movies</title>")
+print("<style>")
+print("h1 {text-align: center; font-family: 'Courier New', Courier, monospace; padding: 40;}")
+print("img {vertical-align: top; padding-left: 20; padding-right: 20;}")
+print(".flex-container { display: flex; font-size: 20;}")
+print(".large {font-size: x-large; font-weight: bold; font-family: 'Courier New', Courier, monospace;}")
+print(".button1 { background-color: blue; color: white; text-align: center; padding: 40.0; font-size: 40; margin-left: 200; margin-top: 40; cursor: pointer; border-radius: 16px}")
+print(".button0 { background-color: yellow; color: black; padding: 20.0; text-align: center; font-size: large; border-radius: 10px; cursor: pointer;}")
+print("</style>")
+print("<body bgcolor='lightskyblue'>")
+print("<a href='../bookyourshow/home_page.html'>")
+print("<button class='button0'>Back</button></a>")
+print("<h1>Top Movies</h1>")
+print("<hr>")
+
+for i in range(len(movie_details)):
+    print("<div class='flex-container'>")
+    print("<div>")
+    print("<p class='large'>"+str(i+1)+". </p>")
+    print("</div>")
+    print("<img src='../bookyourshow/movie_posters/"+movie_details[i][2]+"'>")
+    print("<div>")
+    print("<p class='large'>"+movie_details[i][1]+"</p>")
+    print("<br>")
+    print("<b>Year: </b>"+str(movie_details[i][3])+"<br><br>")
+    print("<b>Genre: </b>"+movie_details[i][4]+"<br><br>")
+    print("<b>Rating: </b>"+str(movie_details[i][5])+"<br>")
+    print("</div>")
+    print("<div>")
+    print("<a id='book' href='../bookyourshow/seat_selection.html?movie="+movie_details[i][1]+"'>")
+    print("<button class='button1'>Book Now</button>")
+    print("</a>")
+    print("</div>")
+    print("</div>")
+    print("<hr>")
+db.close()
